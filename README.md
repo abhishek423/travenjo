@@ -117,7 +117,8 @@ To get a local copy up and running follow these simple example steps.
 Your system should have below mandatory setups
 * Java 11 (minimum)
 * MySQL server
-* IDE for Java - Eclipse/Intellij/STS etc
+* Gradle installed ([Gradle Installation Step](https://gradle.org/install/))
+* Any Webserver for Frontend - Apache / Nginx etc
 
 
 ### Installation
@@ -126,7 +127,34 @@ Your system should have below mandatory setups
    ```sh
    git clone https://github.com/abhishek423/travenjo.git
    ```
-2. Import the project from respected IDE and run it as a spring boot application
+
+2. Database Setup
+
+2. Backend Setup
+  
+   i) Database Setup
+      
+      - Create database named <b>travenjo</b> 
+      
+      - Import the DB from database folder of backend for required sql setup
+
+      - Run the MySQL server
+
+   ii) Copy the <b>backend</b> folder in your respected workspace
+  
+   iii) Run below command inside the <b>backend</b> folder to build the application in your workspace
+   ```sh
+   gradle build
+   ```
+
+   iv) Similarly run below command for start the application after successful build
+   ```sh
+   java -jar .\build\libs\travenjo-0.0.1-SNAPSHOT.jar
+   ```
+
+3. Frontend Setup
+
+   Copy the <b>frontend</b> folder in any websever (e.g. Apache / Nginx) and it should work.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
