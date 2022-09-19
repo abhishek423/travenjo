@@ -42,7 +42,7 @@
     <a href="https://docs.google.com/presentation/d/1bXMIz3JP3yOKPUr2ObKw-qCrv80Y5WIdqxuimEvnQcs/edit#slide=id.g251d9112ad_1_0"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/abhishek423/travenjo">View Demo</a>
+    <a href="https://drive.google.com/file/d/1VonFK_aLL87hhhIyzf6N_lFXabvvadau/view?usp=sharing">View Demo</a>
     ·
     <a href="https://github.com/abhishek423/travenjo/issues">Report Bug</a>
     ·
@@ -109,7 +109,6 @@ An intra city trip management application with following benifits
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -119,6 +118,8 @@ Your system should have below mandatory setups
 * MySQL server
 * Gradle installed ([Gradle Installation Step](https://gradle.org/install/))
 * Any Webserver for Frontend - Apache / Nginx etc
+* Google Map API Key ([Steps to Generate](https://console.cloud.google.com/apis/credentials)) 
+
 
 
 ### Installation
@@ -128,17 +129,15 @@ Your system should have below mandatory setups
    git clone https://github.com/abhishek423/travenjo.git
    ```
 
-2. Database Setup
-
 2. Backend Setup
   
    i) Database Setup
-      
-      - Create database named <b>travenjo</b> 
-      
-      - Import the DB from database folder of backend for required sql setup
 
       - Run the MySQL server
+
+      - Create database named <b>travenjo</b> in your SQL server 
+      
+      - Import the DB from <b>resource</b> folder of <b>backend</b> mentioned [here](https://github.com/abhishek423/travenjo/blob/master/backend/src/main/resources/travenjo.sql) for required sql setup in local
 
    ii) Copy the <b>backend</b> folder in your respected workspace
   
@@ -154,7 +153,10 @@ Your system should have below mandatory setups
 
 3. Frontend Setup
 
-   Copy the <b>frontend</b> folder in any websever (e.g. Apache / Nginx) and it should work.
+   i) Copy the <b>frontend</b> folder in any websever (e.g. Apache / Nginx) and it should work.
+
+   ii) Please update the API key in <b>rider/book-ride.html</b> file to connect with google map API service. You can look for the script import of Google Map API and replace your key in the place <b>"Your_Key_here"</b>. You can generate an API key from [here](https://console.cloud.google.com/apis/credentials)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
