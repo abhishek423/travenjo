@@ -167,7 +167,7 @@ Your system should have below mandatory setups
 
 Please refer 
 * [Wireframe](https://docs.google.com/presentation/d/1bXMIz3JP3yOKPUr2ObKw-qCrv80Y5WIdqxuimEvnQcs/edit?usp=sharing)
-* [API Documentation](https://docs.google.com/document/d/18lyPhJRfdTUKYveijU_3FIQkUvvkbDcCOR3EpnLHmbQ/edit?usp=sharing)
+* [API Documentation](http://locathost:8080/swagger-ui/index.html) - We have used swagger for API documentation.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
