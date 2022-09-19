@@ -12,5 +12,6 @@ public class DriverRegisterRequest {
     private String phone;
     private String registeredWith;
     private String carRegistrationNumber;
+    private String profilePic;
 
 }

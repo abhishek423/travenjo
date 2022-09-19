@@ -23,4 +23,5 @@ public class Driver {
     private String driverRegistrationIdWithServiceProvider;
     private String driverRegisteredWith;
     private String carRegistrationNumber;
+    private String profilePic;
 }

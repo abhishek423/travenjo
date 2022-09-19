@@ -60,3 +60,11 @@
     background: lightblue;
     font-weight: bold;
 }
+
+.confirm-text {
+    font-size: 300%;
+    width: 90%;
+    padding: 30px;
+    margin: auto;
+    text-align: center;
+}

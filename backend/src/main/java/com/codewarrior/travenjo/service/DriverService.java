@@ -29,6 +29,7 @@ public class DriverService {
         Driver driver  = consumer.getDriver(driverRegisterRequest.getPhone());
 
         driver.setDriverRegisteredWith(driverRegisterRequest.getRegisteredWith());
+        driver.setProfilePic(driverRegisterRequest.getProfilePic());
 
         return driverRepository.save(driver);
     }

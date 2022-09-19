@@ -1,28 +1,11 @@
 let emergenyBookingPriceList = [];
 let compareBookingPriceList = [];
-let images = [];
-let selectedRideIndex = 0;
+let selectedRideDriverId = 0;
 let tripType;
 
 window.onload = function() {
-    for(let i=0; i< 10; i++)
-    {
-        $.ajax({
 
-            url: "https://fakeface.rest/face/json?gender=male&minimum_age=25&maximum_age=50",
-
-            success: function (response) {
-                images.push(response.image_url)
-            }
-        })
-    }
-
-    let interval = setInterval(function(){
-        if(images.length == 10) {
-            clearInterval(interval)
-            getRideOptions()
-        }
-    }, 100)
+    getRideOptions()
 }
 
 function getRideOptions() {
@@ -53,16 +36,17 @@ function getRideOptions() {
                 compareBookingPriceList = bookingOptions
                 let html = "";
                 for (let i = 0; i < bookingOptions.length; i++) {
+                    if(i == 0)selectedRideDriverId = bookingOptions[i].driver.driverId
                     let option = bookingOptions[i];
-                    html += "<div id='ride-details-" + i + "' class=\"ride-details-wrapper\" onClick='selectEmergencyRide(" + i + ")'>\n" +
+                    html += "<div id='ride-details-" + i + "' class=\"ride-details-wrapper\" onClick='selectRide(" + option.driver.driverId + "," + i + ")'>\n" +
                         "                <div class=\"driver-image-wrapper\">\n" +
                         "                    <img class=\"driver-avatar\"\n" +
-                        "                         src=\"" + images[i] + "\" />\n" +
+                        "                         src=\"" + option.driver.profilePic + "\" />\n" +
                         "                </div>\n" +
                         "                <div class=\"car-details-wrapper\">\n" +
                         "                    <div class=\"service-provider-container\"> " + option.rideServiceProviderContext.serviceProvider + " </div>\n" +
                         "                    <div class=\"car-model-container\"> " + option.driver.carModel + " </div>\n" +
-                        "                    <div class=\"car-number-container\"> " + option.driver.carNumber + " </div>\n" +
+                        "                    <div class=\"car-number-container\"> " + option.driver.carRegistrationNumber + " </div>\n" +
                         "                </div>\n" +
                         "                <div class=\"price-button-wrapper\">\n" +
                         "                    <div class=\"price-text-wrapper\"> INR " + parseFloat(option.rideServiceProviderContext.price).toFixed(2) + " </div>\n" +
@@ -79,18 +63,20 @@ function getRideOptions() {
                 let bookingOptions = response.emergencyPriceBooking.tripOptions
                 emergenyBookingPriceList = bookingOptions
                 $("#warning-text-custom-price").removeClass("hidden")
+
                 let html = "";
                 for (let i = 0; i < bookingOptions.length; i++) {
+                    if(i == 0)selectedRideDriverId = bookingOptions[i].driver.driverId
                     let option = bookingOptions[i];
-                    html += "<div id='ride-details-" + i + "' class=\"ride-details-wrapper\" onClick='selectEmergencyRide(" + i + ")'>\n" +
+                    html += "<div id='ride-details-" + i + "' class=\"ride-details-wrapper\" onClick='selectRide(" + option.driver.driverId + "," + i + ")'>\n" +
                         "                <div class=\"driver-image-wrapper\">\n" +
                         "                    <img class=\"driver-avatar\"\n" +
-                        "                         src=\"" + images[i] + "\" />\n" +
+                        "                         src=\"" + option.driver.profilePic + "\" />\n" +
                         "                </div>\n" +
                         "                <div class=\"car-details-wrapper\">\n" +
                         "                    <div class=\"service-provider-container\"> " + option.rideServiceProviderContext.serviceProvider + " </div>\n" +
                         "                    <div class=\"car-model-container\"> " + option.driver.carModel + " </div>\n" +
-                        "                    <div class=\"car-number-container\"> " + option.driver.carNumber + " </div>\n" +
+                        "                    <div class=\"car-number-container\"> " + option.driver.carRegistrationNumber + " </div>\n" +
                         "                </div>\n" +
                         "                <div class=\"price-button-wrapper\">\n" +
                         "                    <div class=\"price-text-wrapper\"> INR " + parseFloat(option.rideServiceProviderContext.price).toFixed(2) + " </div>\n" +
@@ -108,12 +94,13 @@ function getRideOptions() {
                 emergenyBookingPriceList = bookingOptions
                 $("#warning-text-split").removeClass("hidden")
                 let html = "";
+                selectedRideDriverId = ""
                 for (let i = 0; i < bookingOptions.length; i++) {
                     let option = bookingOptions[i];
                     let splitFrom  = "";
                     let splitTo = "";
 
-                    console.log(option.rideServiceProviderContext.splitInfo.pickUp)
+                    selectedRideDriverId += bookingOptions[i].driver.driverId + "and"
 
                     if(option.rideServiceProviderContext.splitInfo.pickUp.indexOf(',') > -1)
                         splitFrom = option.rideServiceProviderContext.splitInfo.pickUp.split(',')[0]
@@ -124,15 +111,15 @@ function getRideOptions() {
                     else splitTo = option.rideServiceProviderContext.splitInfo.drop
 
                     html += "<div>" +
-                        "<div id='ride-details-" + i + "' class=\"ride-details-wrapper\" onClick='selectEmergencyRide(" + i + ")'>\n" +
+                        "<div id='ride-details-" + i + "' class=\"ride-details-wrapper\" onClick='selectRide(" + option.driver.driverId + "," + i + ")'>\n" +
                         "                <div class=\"driver-image-wrapper\">\n" +
                         "                    <img class=\"driver-avatar\"\n" +
-                        "                         src=\"" + images[i] + "\" />\n" +
+                        "                         src=\"" + option.driver.profilePic + "\" />\n" +
                         "                </div>\n" +
                         "                <div class=\"car-details-wrapper\">\n" +
                         "                    <div class=\"service-provider-container\"> " + option.rideServiceProviderContext.serviceProvider + " </div>\n" +
                         "                    <div class=\"car-model-container\"> " + option.driver.carModel + " </div>\n" +
-                        "                    <div class=\"car-number-container\"> " + option.driver.carNumber + " </div>\n" +
+                        "                    <div class=\"car-number-container\"> " + option.driver.carRegistrationNumber + " </div>\n" +
                         "                </div>\n" +
                         "                <div class=\"price-button-wrapper\">\n" +
                         "                    <div class=\"price-text-wrapper\"> INR " + parseFloat(option.rideServiceProviderContext.price).toFixed(2) + " </div>\n" +
@@ -152,32 +139,21 @@ function getRideOptions() {
     })
 }
 
-function selectEmergencyRide(index) {
+function selectRide(driverId, index) {
     $("[id^=ride-details]").removeClass('ride-selected')
     $("#ride-details-" + index).addClass('ride-selected')
-    selectedRideIndex = index;
+    selectedRideDriverId = driverId;
 }
 
 function confirmRide() {
+
     $.ajax({
 
-        url: "http://localhost:8080/trip/create",
+        url: "http://localhost:8080/trip/confirm?driverId=" + selectedRideDriverId,
 
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        data: JSON.stringify({
-            pickup: sessionStorage.getItem("from"),
-            destination: sessionStorage.getItem("to"),
-            riderId: sessionStorage.getItem("riderId"),
-            driverId: emergenyBookingPriceList[selectedRideIndex].driverId,
-            tripType: tripType
-        }),
-
-        success: function (response) {
+        success: function(response) {
+            $("#ride-option-list").html("<div class='confirm-text'><h1>Your trip is confirmed</h1></div>");
+            $(".big-yellow-button").html("Track your ride");
         }
     })
 }

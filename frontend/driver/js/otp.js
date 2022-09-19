@@ -2,22 +2,31 @@ function registerDriver() {
 
     $.ajax({
 
-        url: "http://localhost:8080/driver/register",
+        url: "https://fakeface.rest/face/json?gender=male&minimum_age=25&maximum_age=50",
 
-        method: "POST",
+        success: function (imgResponse) {
 
-        headers : {
-            "Content-Type": "application/json"
-        },
+            $.ajax({
 
-        data: JSON.stringify({
-            registeredWith: sessionStorage.getItem("registeredWith"),
-            phone: sessionStorage.getItem("driverPhone")
-        }),
+                url: "http://localhost:8080/driver/register",
 
-        success: function(response) {
-            sessionStorage.setItem("driverProfile", JSON.stringify(response))
-            redirect('driver-profile.html')
+                method: "POST",
+
+                headers : {
+                    "Content-Type": "application/json"
+                },
+
+                data: JSON.stringify({
+                    registeredWith: sessionStorage.getItem("registeredWith"),
+                    phone: sessionStorage.getItem("driverPhone"),
+                    profilePic: imgResponse.image_url
+                }),
+
+                success: function(response) {
+                    sessionStorage.setItem("driverProfile", JSON.stringify(response))
+                    redirect('driver-profile.html')
+                }
+            })
         }
     })
 }
