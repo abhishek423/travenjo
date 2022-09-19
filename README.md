@@ -166,8 +166,8 @@ Your system should have below mandatory setups
 ## Usage
 
 Please refer 
-* [Wireframe](https://docs.google.com/presentation/d/1bXMIz3JP3yOKPUr2ObKw-qCrv80Y5WIdqxuimEvnQcs/edit#slide=id.g251d9112ad_1_0)
-* [API Documentation](https://docs.google.com/document/d/18lyPhJRfdTUKYveijU_3FIQkUvvkbDcCOR3EpnLHmbQ/edit#heading=h.xz28nnxgmuno)
+* [Wireframe](https://docs.google.com/presentation/d/1bXMIz3JP3yOKPUr2ObKw-qCrv80Y5WIdqxuimEvnQcs/edit?usp=sharing)
+* [API Documentation](https://docs.google.com/document/d/18lyPhJRfdTUKYveijU_3FIQkUvvkbDcCOR3EpnLHmbQ/edit?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
